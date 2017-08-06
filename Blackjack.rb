@@ -6,7 +6,7 @@ class Player
 	def initialize(start_amount)
 		@funds = start_amount
 	end
-	
+	#methods below are fun handlers which increases, decreases and displays the player funds.
 	def bet(amount)
 		@funds -= amount
 		return amount
@@ -30,7 +30,7 @@ class Player
 		$deck[@card_num].played = true
 		return @card_num
 	end
-	
+	#Used to display the card drawn 
 	def display_card
 		case @card_num
 		when $deck[@card_num].number == 11 then puts "Jack of #{$deck[@card_num].suit}"
@@ -73,7 +73,8 @@ for i in 0..51
 end
 #Stores all the card objects into an array
 
-
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+#Display side of code
 puts "Welcome to blackjack!"
 puts "Please enter the amount to start:"
 start_amount = Integer(gets.chomp)
@@ -87,7 +88,7 @@ until Player1.funds == 0 && Dealer.funds == 0 do
 	if bet_amount <= Player1.funds && bet_amount <= Dealer.funds
 		pot = Player1.bet(bet_amount) + Dealer.bet(bet_amount)
 		puts "The pot contains £#{pot}"
-		cards = []
+		extra_cards = []
 		
 		card1 = Player1.new_card
 		Player1.display_card
@@ -100,7 +101,19 @@ until Player1.funds == 0 && Dealer.funds == 0 do
 		total = $deck[card1].number + $deck[card2].number 
 		Dtotal = $deck[Dcard1].number + $deck[Dcard2].number
 		
-		if total > 21
+		
+		
+
+	else
+		puts "Player/Dealer does not the nessecary funds!"
+	end
+end
+
+#Method to check if the total of cards are within range
+
+def checker(total)
+
+	if total > 21
 			puts "Busted your cards total #{total}"
 		elsif total == 21
 			puts "Blackjack!"
@@ -113,22 +126,4 @@ until Player1.funds == 0 && Dealer.funds == 0 do
 		else
 			
 		end
-		
-
-	else
-		puts "Player/Dealer does not the nessecary funds!"
-	end
-end
-=begin
-module Play
-	Play.pick_card
-		card_num = rand(0..52)
-		if deck[card_num].played  = false
-			deck[card_num].played = true
-			return deck[card_num]
-		else
-		 "Card already played"
-		end
-
-end
-=end
+end	
