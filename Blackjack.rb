@@ -1,5 +1,7 @@
 $deck =[]
 #deck is made global to be accessed by everyone
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+#Player class to store funds and player methods
 class Player
 	@funds
 	@card_num
@@ -44,14 +46,15 @@ class Player
 		end
 	end
 end
-#Player class to store funds and player methods
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+#Card class to make instances of each card
 class Card
 	attr_accessor :suit
 	attr_accessor :number
 	attr_accessor :played
 end
-#Card class to make instances of each card
-
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+#Stores all the card objects into an array
 for i in 0..51
 	if i < 13 
 		$deck[i] = Card.new
@@ -75,8 +78,18 @@ for i in 0..51
 		$deck[i].played = false	
 	end
 end
-#Stores all the card objects into an array
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+#Method to check if the total of cards are within range
+def checker(total)
 
+	if total > 21
+		return "busted"
+	elsif total == 21	
+		return "blackjack"
+	else
+		return "under"	
+	end
+end	
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 #Display side of code
 puts "Welcome to blackjack!"
@@ -108,8 +121,8 @@ until Player1.funds == 0 && Dealer.funds == 0 do
 		d_total = $deck[d_card1].number + $deck[d_card2].number
 		puts "your total #{total} Dealer total #{d_total}" 
 		
-		# checker(total)
-		# checker(Dtotal)
+		puts checker(total)
+		puts checker(d_total)
 		
 
 	else
@@ -117,15 +130,3 @@ until Player1.funds == 0 && Dealer.funds == 0 do
 	end
 end
 
-#Method to check if the total of cards are within range
-
-def checker(total)
-
-	if total > 21
-		return "busted"
-	elsif total == 21	
-		return "blackjack"
-	else
-		return "under"	
-	end
-end	
