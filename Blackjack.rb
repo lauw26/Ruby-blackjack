@@ -81,7 +81,6 @@ end
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 #Method to check if the total of cards are within range
 def checker(total)
-
 	if total > 21
 		return "busted"
 	elsif total == 21	
@@ -91,7 +90,23 @@ def checker(total)
 	end
 end	
 #---------------------------------------------------------------------------------------------------------------------------------------------------
-#Prompt for 
+#user decision
+def decision(p_check,d_check)
+	case p_check
+		when "blackjack"
+			if d_check == "blackjack"
+
+			else
+
+			end
+		when "busted"
+
+		when "under"
+
+		else
+			puts "decision error!"
+	end
+end
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 #Main side of code
 puts "Welcome to blackjack!"
@@ -121,18 +136,11 @@ until Player1.funds == 0 && Dealer.funds == 0 do
 
 		total = $deck[card1].number + $deck[card2].number 
 		d_total = $deck[d_card1].number + $deck[d_card2].number
-		
-		outcome = checker(total)
-		case outcome
-			when "under"
 
-			when "busted"
-
-			when "blackjack"
-
-			else 
-				puts "error in total case"
+		while checker(total) == "under" && checker(d_total) == "under" do
+			decision = gets.chomp
 		end
+		
 
 	else
 		puts "Player/Dealer does not the nessecary funds!"
