@@ -1,5 +1,5 @@
-$deck =[]
 #deck is made global to be accessed by everyone
+$deck =[]
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 #Player class to store funds and player methods
 class Player
@@ -54,7 +54,7 @@ class Card
 	attr_accessor :played
 end
 #---------------------------------------------------------------------------------------------------------------------------------------------------
-#Stores all the card objects into an array
+#Creates and stores all the card objects into an array
 for i in 0..51
 	if i < 13 
 		$deck[i] = Card.new
@@ -122,12 +122,14 @@ until Player1.funds == 0 && Dealer.funds == 0 do
 		total = $deck[card1].number + $deck[card2].number 
 		d_total = $deck[d_card1].number + $deck[d_card2].number
 		
-		case total
+		outcome = checker(total)
+		case outcome
 			when "under"
 
 			when "busted"
 
-			when "blackjack"	
+			when "blackjack"
+
 			else 
 				puts "error in total case"
 		end
