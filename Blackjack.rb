@@ -32,11 +32,15 @@ class Player
 	end
 	#Used to display the card drawn 
 	def display_card
-		case @card_num
-		when $deck[@card_num].number == 11 then puts "Jack of #{$deck[@card_num].suit}"
-		when $deck[@card_num].number == 12 then puts "Queen of #{$deck[@card_num].suit}"
-		when $deck[@card_num].number == 13 then puts "King of #{$deck[@card_num].suit}"
-		else puts "#{$deck[@card_num].number} of #{$deck[@card_num].suit}" 
+		case $deck[@card_num].number
+		when 11 
+			puts "Jack of #{$deck[@card_num].suit}"
+		when 12
+			puts "Queen of #{$deck[@card_num].suit}"
+		when 13
+			puts "King of #{$deck[@card_num].suit}"
+		else 
+			puts "#{$deck[@card_num].number} of #{$deck[@card_num].suit}" 
 		end
 	end
 end
@@ -95,13 +99,17 @@ until Player1.funds == 0 && Dealer.funds == 0 do
 		card2 = Player1.new_card
 		Player1.display_card
 
-		Dcard1 = Dealer.new_card
-		Dcard2 = Dealer.new_card
-		
+		d_card1 = Dealer.new_card
+		Dealer.display_card
+		d_card2 = Dealer.new_card
+		Dealer.display_card
+
 		total = $deck[card1].number + $deck[card2].number 
-		Dtotal = $deck[Dcard1].number + $deck[Dcard2].number
+		d_total = $deck[d_card1].number + $deck[d_card2].number
+		puts "your total #{total} Dealer total #{d_total}" 
 		
-		
+		# checker(total)
+		# checker(Dtotal)
 		
 
 	else
