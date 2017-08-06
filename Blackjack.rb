@@ -114,16 +114,10 @@ end
 def checker(total)
 
 	if total > 21
-			puts "Busted your cards total #{total}"
-		elsif total == 21
-			puts "Blackjack!"
-			if Dtotal != 21  
-				Player1.add_funds(pot) 
-			else
-				Player1.add_funds(pot/2)
-				Dealer.add_funds(pot/2)
-			end
-		else
-			
-		end
+		return "busted"
+	elsif total == 21	
+		return "blackjack"
+	else
+		return "under"	
+	end
 end	
