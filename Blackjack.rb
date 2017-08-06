@@ -35,14 +35,14 @@ class Player
 	#Used to display the card drawn 
 	def display_card
 		case $deck[@card_num].number
-		when 11 
-			puts "Jack of #{$deck[@card_num].suit}"
-		when 12
-			puts "Queen of #{$deck[@card_num].suit}"
-		when 13
-			puts "King of #{$deck[@card_num].suit}"
-		else 
-			puts "#{$deck[@card_num].number} of #{$deck[@card_num].suit}" 
+			when 11 
+				puts "Jack of #{$deck[@card_num].suit}"
+			when 12
+				puts "Queen of #{$deck[@card_num].suit}"
+			when 13
+				puts "King of #{$deck[@card_num].suit}"
+			else 
+				puts "#{$deck[@card_num].number} of #{$deck[@card_num].suit}" 
 		end
 	end
 end
@@ -91,7 +91,9 @@ def checker(total)
 	end
 end	
 #---------------------------------------------------------------------------------------------------------------------------------------------------
-#Display side of code
+#Prompt for 
+#---------------------------------------------------------------------------------------------------------------------------------------------------
+#Main side of code
 puts "Welcome to blackjack!"
 puts "Please enter the amount to start:"
 start_amount = Integer(gets.chomp)
@@ -119,11 +121,16 @@ until Player1.funds == 0 && Dealer.funds == 0 do
 
 		total = $deck[card1].number + $deck[card2].number 
 		d_total = $deck[d_card1].number + $deck[d_card2].number
-		puts "your total #{total} Dealer total #{d_total}" 
 		
-		puts checker(total)
-		puts checker(d_total)
-		
+		case total
+			when "under"
+
+			when "busted"
+
+			when "blackjack"	
+			else 
+				puts "error in total case"
+		end
 
 	else
 		puts "Player/Dealer does not the nessecary funds!"
