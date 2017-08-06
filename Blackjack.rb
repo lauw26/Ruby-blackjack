@@ -138,9 +138,20 @@ until Player1.funds == 0 && Dealer.funds == 0 do
 		d_total = $deck[d_card1].number + $deck[d_card2].number
 
 		while checker(total) == "under" && checker(d_total) == "under" do
+			puts "Either hit(draw) or stand(stay with your current hand)"
 			decision = gets.chomp
+			case decision 
+				when "hit"
+					puts "hit me!"
+				when "stand"
+					break 
+				else
+					puts "Invalid input!\nPlease enter either hit or stand"
+			end	
+
 		end
 		
+		puts "Freedom!"
 
 	else
 		puts "Player/Dealer does not the nessecary funds!"
